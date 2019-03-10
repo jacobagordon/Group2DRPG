@@ -71,6 +71,12 @@
     <Compile Include="Assets\2d-extras-master 2\Assets\Tilemap\Tiles\Rule Tile\Scripts\RuleTile.cs" />
     <Compile Include="Assets\2d-extras-master 2\Assets\Tilemap\Tiles\Terrain Tile\Scripts\TerrainTile.cs" />
     <Compile Include="Assets\2d-extras-master 2\Assets\Tilemap\Tiles\Weighted Random Tile\WeightedRandomTile.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Abstract\DelayedReaction.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Abstract\Reaction.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventoryEditor.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Item.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Reactions\PickedUpItemReaction.cs" />
     <Compile Include="Assets\Scripts\PlayerControlScript.cs" />
     <None Include="Assets\2d-extras-master 2\Assets\Tilemap\Tiles\Rule Tile\ScriptTemplates\NewCustomRuleTile.cs.txt" />
     <None Include="Assets\2d-extras-master 2\Assets\Tilemap\Brushes\Tint Brush Smooth\Shaders\TintedTilemap.shader" />
