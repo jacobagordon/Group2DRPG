@@ -1,0 +1,23 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu (fileName = "new Consumable", menuName = "Items/Consumable")]
+public class Consumable : Item
+{
+    public int healAmt = 5;
+
+    public override void Use()
+    {
+        Debug.Log("Player used a consumable");
+        // Get Player Health
+        GameObject player = Inventory.instance.player;
+        PlayerHealthManager PlayerHealth = player.GetComponent<PlayerHealthManager>();
+
+        // Heal Player
+        PlayerHealth.HealPlayer(healAmt);
+
+        // Remove Potion
+        Inventory.instance.Remove(this);
+    }
+}

@@ -1,7 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-[CreateAssetMenu]
 public class Item : ScriptableObject
 {
-    public Sprite sprite;
+    public string itemName;
+    public Sprite icon;
+    public int count;
+
+    public virtual void Use()
+    {
+
+    }
 }

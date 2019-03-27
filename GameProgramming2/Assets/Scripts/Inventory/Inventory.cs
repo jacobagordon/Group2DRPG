@@ -1,39 +1,71 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    public const int numItemSlots = 4;
-    public Image[] itemImages = new Image[numItemSlots];
-    public Item[] items = new Item[numItemSlots];
+    public List<Item> inv = new List<Item>();
 
-    public void addItem(Item itemToAdd)
+    public GameObject player;
+    public GameObject inventoryPanel;
+
+    public static Inventory instance;
+
+    // Start is called before the first frame update
+    void Start()
     {
-        for (int i = 0; i < items.Length; i++)
+        instance = this;
+        updatePanelSlot();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void updatePanelSlot()
+    {
+        int index = 0;
+        foreach (Transform child in inventoryPanel.transform)
         {
-            if (items[i] == null)
+            InventorySlotController slot = child.GetComponent<InventorySlotController>();
+
+            if (index < inv.Count)
             {
-                items[i] = itemToAdd;
-                itemImages[i].sprite = itemToAdd.sprite;
-                itemImages[i].enabled = true;
-                return;
+                slot.item = inv[index];
             }
+            else
+            {
+                slot.item = null;
+            }
+
+            slot.updateInfo();
+            index++;
         }
     }
 
-    public void removeItem(Item itemToRemove)
+
+    public void Add(Item item)
     {
-        for (int i = 0; i < items.Length; i++)
+        if (inv.Count < 4)
         {
-            if (items[i] == itemToRemove)
+            if (inv.Contains(item))
             {
-                items[i] = null;
-                itemImages[i].sprite = null;
-                itemImages[i].enabled = false;
-                return;
+                Item i = inv.Find(a => a == item);
+                i.count++;
+            }
+            else
+            {
+                inv.Add(item);
             }
         }
+        updatePanelSlot();
+    }
+
+    public void Remove(Item item)
+    {
+        inv.Remove(item);
+        updatePanelSlot();
     }
 }
