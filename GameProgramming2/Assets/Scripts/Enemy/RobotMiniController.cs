@@ -14,6 +14,8 @@ public class RobotMiniController : MonoBehaviour
     int damageToPlayer = 10;
     [SerializeField]
     Item DropItem;
+    [SerializeField]
+    int health;
 
     float timeBetweenMoveCounter;
     float timeToMoveCounter;
@@ -21,7 +23,7 @@ public class RobotMiniController : MonoBehaviour
     Vector2 moveDirection;
 
     Rigidbody2D myRigidbody2D;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,11 +35,17 @@ public class RobotMiniController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Move();
+        EnemyDeath();
+    }
+
+    private void Move()
+    {
         if (moving)
         {
             timeToMoveCounter -= Time.deltaTime;
             myRigidbody2D.velocity = moveDirection;
-            if(timeToMoveCounter < 0f)
+            if (timeToMoveCounter < 0f)
             {
                 moving = false;
                 timeBetweenMoveCounter = Random.Range(timeBetweenMove * 0.75f, timeBetweenMove * 1.25f);
@@ -47,7 +55,7 @@ public class RobotMiniController : MonoBehaviour
         {
             timeBetweenMoveCounter -= Time.deltaTime;
             myRigidbody2D.velocity = Vector2.zero;
-            if(timeBetweenMoveCounter < 0f)
+            if (timeBetweenMoveCounter < 0f)
             {
                 moving = true;
                 timeToMoveCounter = Random.Range(timeToMove * 0.75f, timeToMove * 1.25f);
@@ -62,7 +70,20 @@ public class RobotMiniController : MonoBehaviour
         {
             Debug.Log("Hit Player");
             other.gameObject.GetComponent<PlayerHealthManager>().DamageToPlayer(damageToPlayer);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+    }
+
+    private void EnemyDeath()
+    {
+        if (health <= 0)
+        {
             Inventory.instance.Add(DropItem);
+            Destroy(gameObject);
         }
     }
 

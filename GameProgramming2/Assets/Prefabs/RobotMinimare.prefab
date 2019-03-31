@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 324690775736526468}
   - component: {fileID: 324690775736526469}
   m_Layer: 11
-  m_Name: Sprite
+  m_Name: MinimareSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,3 +187,4 @@ MonoBehaviour:
   timeToMove: 1
   damageToPlayer: 10
   DropItem: {fileID: 11400000, guid: 0751a6266c4b44dec9dfb31c80eafe20, type: 2}
+  health: 10

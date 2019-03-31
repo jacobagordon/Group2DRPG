@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81e3dbd32ec094e50ae1468d752b5f7c, type: 3}
-  m_Name: HealthPotion
+  m_Name: HealthPotion Blue
   m_EditorClassIdentifier: 
-  itemName: Health Potion
-  icon: {fileID: 21300000, guid: b339c1f72879345e4bfbd6803a386837, type: 3}
-  heal: 5
+  itemName: Blue Potion
+  icon: {fileID: 21300000, guid: 51d7d0df69a374c6ea3ab6c3af29c011, type: 3}
+  count: 15
+  healAmt: 5

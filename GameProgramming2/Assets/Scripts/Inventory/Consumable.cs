@@ -15,7 +15,24 @@ public class Consumable : Item
         PlayerHealthManager PlayerHealth = player.GetComponent<PlayerHealthManager>();
 
         // Heal Player
-        PlayerHealth.HealPlayer(healAmt);
+
+        Debug.Log(itemName);
+        if(itemName == "Green Potion")
+        {
+            PlayerHealth.HealPlayer(2);
+        }
+        else if(itemName == "Blue Potion")
+        {
+            PlayerHealth.HealPlayer(5);
+        }
+        else if(itemName == "Red Potion")
+        {
+            PlayerHealth.HealPlayer(7);
+        }
+        else if(itemName == "Gold Potion")
+        {
+            PlayerHealth.HealPlayer(10);
+        }
 
         // Remove Potion
         Inventory.instance.Remove(this);
